@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TÍNH TUỔI THAI // VÒNG XOAY QUANG HỌC & HUẤN LUYỆN LÂM SÀNG SẢN KHOA</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- 3-Tier Design Tokens & Modular Styles -->
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/wheel.css">
+  <link rel="stylesheet" href="css/console.css">
+</head>
+<body>
+  <div class="app-container">
+    
+    <!-- APP HEADER -->
+    <header class="app-header">
+      <div class="brand-group">
+        <div class="brand-nucleus" aria-hidden="true">
+          <div class="brand-nucleus-core"></div>
+        </div>
+        <div class="brand-text">
+          <div class="brand-title-row">
+            <h1 class="brand-title">TÍNH TUỔI <span class="accent">THAI</span></h1>
+            <span class="author-badge">&copy; Việt Thanh - Y23C - 17</span>
+          </div>
+          <p class="brand-subtitle">Vòng xoay quang học & Huấn luyện lâm sàng Sản khoa</p>
+        </div>
+      </div>
+      
+      <div class="header-badges">
+        <button type="button" id="btn-start-tour" class="btn-action btn-action-primary">
+          <span class="btn-icon">✨</span><span class="btn-text">Rọi đèn</span>
+        </button>
+        <button type="button" id="btn-export-note" class="btn-action">
+          <span class="btn-icon">📋</span><span class="btn-text">Xuất phiếu</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- THANH ĐIỀU HƯỚNG 3 TAB DI ĐỘNG (MOBILE NAVIGATION BAR) -->
+    <nav class="mobile-nav-bar" id="mobile-nav-bar" aria-label="Điều hướng điện thoại">
+      <button type="button" class="mobile-nav-btn active" data-tab="wheel" id="tab-btn-wheel">
+        <span class="mobile-nav-icon">🎡</span>
+        <span class="mobile-nav-text">Vòng xoay</span>
+      </button>
+      <button type="button" class="mobile-nav-btn" data-tab="form" id="tab-btn-form">
+        <span class="mobile-nav-icon">📋</span>
+        <span class="mobile-nav-text">Nhập liệu & KQ</span>
+      </button>
+      <button type="button" class="mobile-nav-btn" data-tab="osce" id="tab-btn-osce">
+        <span class="mobile-nav-icon">🎓</span>
+        <span class="mobile-nav-text">Thi OSCE</span>
+      </button>
+    </nav>
+
+    <!-- MAIN ASYMMETRIC WORKSPACE -->
+    <main class="app-workspace" id="app-workspace" data-active-tab="wheel">
+      
+      <!-- LEFT SECTION: INTERACTIVE PREGNANCY WHEEL (Sticky on Desktop) -->
+      <section class="wheel-stage" id="mobile-content-wheel" aria-label="Interactive Pregnancy Wheel">
+        <div class="wheel-stage-header">
+          <h2 class="section-title">Vòng xoay tuổi thai quang học</h2>
+          <button type="button" id="btn-zoom-wheel" class="btn-action btn-zoom-action" style="min-height: 38px; padding: 0.35rem 0.8rem; font-size: 0.775rem;">
+            🔍 Kính lúp (1.4x)
+          </button>
+        </div>
+        
+        <!-- BẢNG HUẤN LUYỆN ĐỌC THƯỚC TRỰC TIẾP TRÊN VÒNG (OSCE ON-WHEEL TRAINER) -->
+        <div class="onwheel-coach-card" id="onwheel-coach-card">
+          <div class="onwheel-coach-header">
+            <div class="onwheel-coach-title">
+              <span>🎓</span>
+              <span>CHỈ DẪN XOAY & ĐỌC THI OSCE</span>
+            </div>
+            <button type="button" class="btn-toggle-collapse" id="btn-toggle-coach" aria-expanded="true" title="Thu gọn / Mở rộng chỉ dẫn">
+              <span class="collapse-label">Thu gọn</span>
+              <span class="collapse-chevron">▲</span>
+            </button>
+          </div>
+            <div class="onwheel-scenario-tabs">
+              <button type="button" class="btn-scenario-tab active" data-scenario="case1" id="tab-scen-1">
+                🌸 Ca 1: Kinh chót (10/02)
+              </button>
+              <button type="button" class="btn-scenario-tab" data-scenario="case2" id="tab-scen-2">
+                ⚡ Ca 2: Siêu âm CRL (12/03)
+              </button>
+              <button type="button" class="btn-scenario-tab" data-scenario="case3" id="tab-scen-3">
+                🔬 Ca 3: IVF phôi N5 (20/02)
+              </button>
+              <button type="button" class="btn-scenario-tab" data-scenario="form" id="tab-scen-form">
+                📋 Ca trên Form
+              </button>
+            </div>
+
+          <!-- 4 Action Steps Nav -->
+          <div class="onwheel-steps-nav">
+            <button type="button" class="btn-onwheel-step active" data-step="1" id="btn-step-1">
+              <span class="step-tag">Bước 1</span>
+              <span>Cần xoay như nào?</span>
+            </button>
+            <button type="button" class="btn-onwheel-step" data-step="2" id="btn-step-2">
+              <span class="step-tag">Bước 2</span>
+              <span>Đọc Dự sinh như nào?</span>
+            </button>
+            <button type="button" class="btn-onwheel-step" data-step="3" id="btn-step-3">
+              <span class="step-tag">Bước 3</span>
+              <span>Đọc Tuổi thai như nào?</span>
+            </button>
+            <button type="button" class="btn-onwheel-step" data-step="4" id="btn-step-4">
+              <span class="step-tag">Bước 4</span>
+              <span>Đọc Mốc khám như nào?</span>
+            </button>
+          </div>
+
+          <!-- Practical Step Details Box -->
+          <div class="onwheel-instruction-box" id="onwheel-instruction-box">
+            <div class="instruction-row">
+              <span class="instruction-icon">🤲</span>
+              <div class="instruction-text" id="instruction-hands">
+                <strong>Thao tác tay trong phòng thi:</strong> Tay trái giữ chặt vành đĩa lịch ngoài (365 ngày). Ngón cái và ngón trỏ tay phải cầm mép đĩa trong, xoay sao cho <em>MŨI TÊN ĐỎ (Đầu kỳ kinh cuối)</em> chỉ chính xác vào vạch ngày 10 Tháng 2 trên đĩa ngoài.
+              </div>
+            </div>
+
+            <div class="instruction-row">
+              <span class="instruction-icon">👁️</span>
+              <div class="instruction-text" id="instruction-eyes">
+                <strong>Mắt nhìn đối chiếu:</strong> Nhìn vào vạch phát sáng trên đĩa ngoài và mũi tên chỉ dẫn trên đĩa trong. Hãy quan sát mũi tên cong hướng dẫn chiều xoay trên mặt vòng.
+              </div>
+            </div>
+
+            <div class="examiner-quote-box" id="instruction-quote">
+              <strong>🗣️ Trả lời Giám khảo:</strong> "Thưa Thầy/Cô, sản phụ nhớ rõ ngày đầu kỳ kinh chót 10/02 và kinh nguyệt đều, em đặt mũi tên Đầu kỳ kinh chót trùng khớp ngày 10 Tháng 2 trên vành lịch ngoài."
+            </div>
+          </div>
+
+          <!-- Toggles Toolbar -->
+          <div class="onwheel-toggles-bar">
+            <button type="button" class="btn-toggle-pill active" id="btn-toggle-sightlines">
+              <span>⚡ Thước ngắm Laser:</span>
+              <strong id="label-sightlines">Bật</strong>
+            </button>
+            <button type="button" class="btn-toggle-pill" id="btn-toggle-blind">
+              <span>🙈 Chế độ Thi thật:</span>
+              <strong id="label-blind">Tắt</strong>
+            </button>
+            <button type="button" class="btn-toggle-pill" id="btn-auto-align">
+              <span>🎯 Tự động xoay chuẩn</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="wheel-wrapper" id="pregnancy-wheel-container">
+          <div class="wheel-halo" aria-hidden="true"></div>
+          <!-- SVG wheel injected via js/wheel.js -->
+        </div>
+
+        <div class="wheel-controls">
+          <div class="wheel-status-bar">
+            <div class="wheel-status-item">
+              <span>Góc xoay:</span>
+              <strong id="wheel-status-angle">0°</strong>
+            </div>
+            <div class="wheel-status-item">
+              <span>Kỳ kinh chót (LMP):</span>
+              <strong id="wheel-status-lmp">--/--/----</strong>
+            </div>
+          </div>
+
+          <div class="wheel-actions">
+            <button type="button" id="btn-sync-wheel" class="btn-action btn-action-primary">Đồng bộ với Form</button>
+            <button type="button" id="btn-today-wheel" class="btn-action">Về hôm nay</button>
+            <button type="button" id="btn-reset-wheel" class="btn-action">Đặt lại</button>
+          </div>
+
+          <div class="wheel-legend">
+            <div class="legend-item">
+              <span class="legend-swatch lmp"></span>
+              <span>Kim Đỏ: Kỳ kinh chót (LMP)</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-swatch conception"></span>
+              <span>Kim Vàng: Thụ tinh (+14d)</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-swatch edd"></span>
+              <span>Kim Xanh: Dự sinh (40w)</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- RIGHT SECTION: CLINICAL CONSOLE & INTERACTIVE COACH -->
+      <section class="clinical-console" id="mobile-content-console" aria-label="Clinical Calculation Console">
+        
+        <!-- NHÓM TAB DI ĐỘNG 1: NHẬP LIỆU & KẾT QUẢ -->
+        <div class="mobile-subtab-group" id="group-mobile-form">
+          
+          <!-- BABY FRUIT SIZE & COUNTDOWN CARD (Đột phá 1) -->
+          <div class="baby-size-card" id="baby-size-card">
+          <div class="baby-size-left">
+            <div class="baby-emoji" id="baby-fruit-emoji">🍋</div>
+            <div class="baby-size-info">
+              <span class="baby-size-title" id="baby-size-week-label">Kích thước bé tuần 12:</span>
+              <span class="baby-size-name" id="baby-fruit-name">Quả chanh vàng (Lemon) ~ 5.4 cm</span>
+            </div>
+          </div>
+          <div class="baby-countdown-badge" id="baby-countdown-badge">
+            Còn 196 ngày đến ngày dự sinh
+          </div>
+        </div>
+
+        <!-- MODE SWITCHER TABS -->
+        <nav class="mode-tabs" role="tablist" aria-label="Chế độ định tuổi thai">
+          <button type="button" class="mode-tab-btn active" data-mode="lmp" role="tab" aria-selected="true">
+            Kỳ kinh cuối (LMP)
+          </button>
+          <button type="button" class="mode-tab-btn" data-mode="crl" role="tab" aria-selected="false">
+            Siêu âm quý 1 (CRL)
+          </button>
+          <button type="button" class="mode-tab-btn" data-mode="ivf" role="tab" aria-selected="false">
+            Thụ tinh ống nghiệm (IVF)
+          </button>
+          <button type="button" class="mode-tab-btn" data-mode="reverse" role="tab" aria-selected="false">
+            Tính ngược từ dự sinh
+          </button>
+        </nav>
+
+        <!-- CLINICAL INPUT FORM -->
+        <form class="input-form" id="clinical-form" onsubmit="return false;">
+          <fieldset class="form-fieldset">
+            
+            <div class="form-row">
+              <div class="input-group">
+                <label for="input-exam-date" class="input-label">
+                  Ngày khảo sát / Khám thai:
+                  <span class="input-label-hint">(Mặc định: Hôm nay)</span>
+                </label>
+                <input type="date" id="input-exam-date" class="date-input" required>
+              </div>
+
+              <div class="input-group">
+                <label for="input-bctc" class="input-label">
+                  Bề cao tử cung (cm):
+                  <span class="input-label-hint">(Dùng ước lượng cân nặng)</span>
+                </label>
+                <input type="number" id="input-bctc" class="text-input" placeholder="Ví dụ: 32" min="10" max="45" step="0.5">
+              </div>
+            </div>
+
+            <!-- Head engagement checkbox -->
+            <div class="input-group">
+              <label class="checkbox-label">
+                <input type="checkbox" id="input-head-engaged">
+                <span>Đầu thai nhi đã lọt vào tiểu khung (Leopold 4 phân kỳ: hệ số n = 11; chưa lọt n = 12)</span>
+              </label>
+            </div>
+
+            <!-- MODE 1: LMP SECTION -->
+            <div class="mode-form-section" data-section="lmp" style="display: flex; flex-direction: column; gap: var(--primitive-space-4);">
+              <div class="input-group">
+                <label for="input-lmp-date" class="input-label">
+                  Ngày đầu kỳ kinh cuối (LMP):
+                  <span class="input-label-hint">(Mốc zero của Naegele)</span>
+                </label>
+                <input type="date" id="input-lmp-date" class="date-input">
+              </div>
+
+              <!-- 4-Point Reliability Audit -->
+              <div class="lmp-audit-box">
+                <div class="lmp-audit-title">Bộ thẩm định 4 tiêu chuẩn kinh nguyệt tin cậy:</div>
+                
+                <label class="checkbox-label">
+                  <input type="checkbox" id="cb-regular-cycle" checked>
+                  <span>1. Chu kỳ kinh đều 28-30 ngày trong tối thiểu 3 chu kỳ liên tiếp.</span>
+                </label>
+
+                <label class="checkbox-label">
+                  <input type="checkbox" id="cb-exact-recall" checked>
+                  <span>2. Nhớ chính xác ngày đầu tiên ra máu của kỳ kinh chót.</span>
+                </label>
+
+                <label class="checkbox-label">
+                  <input type="checkbox" id="cb-no-hormones" checked>
+                  <span>3. Không sử dụng thuốc tránh thai nội tiết trong 3 tháng gần nhất.</span>
+                </label>
+
+                <label class="checkbox-label">
+                  <input type="checkbox" id="cb-no-lactation" checked>
+                  <span>4. Không trong giai đoạn cho con bú gây vô kinh tiết sữa.</span>
+                </label>
+              </div>
+
+              <div class="clinical-warning-callout" id="lmp-warning-callout">
+                <div class="warning-callout-header">CẢNH BÁO LÂM SÀNG: KỲ KINH CUỐI KHÔNG TIN CẬY</div>
+                <div class="warning-callout-body">
+                  Thai phụ không thỏa 4 tiêu chuẩn vàng. Thời điểm rụng trứng biến động bất thường khiến công thức Naegele bị sai lệch từ 2 đến 4 tuần. Bắt buộc dùng Siêu âm quý 1 (CRL 10-84 mm) làm căn cứ pháp lý duy nhất.
+                </div>
+                <button type="button" id="btn-switch-crl" class="btn-switch-crl">Chuyển sang Mode Siêu âm CRL</button>
+              </div>
+            </div>
+
+            <!-- MODE 2: CRL SECTION -->
+            <div class="mode-form-section" data-section="crl" style="display: none; flex-direction: column; gap: var(--primitive-space-4);">
+              <div class="form-row">
+                <div class="input-group">
+                  <label for="input-crl-mm" class="input-label">
+                    Chiều dài đầu mông (CRL):
+                    <span class="input-label-hint">(10 - 84 mm)</span>
+                  </label>
+                  <input type="number" id="input-crl-mm" class="text-input" min="10" max="84" step="0.5" value="45" placeholder="10 - 84">
+                </div>
+
+                <div class="input-group">
+                  <label for="input-crl-date" class="input-label">
+                    Ngày thực hiện siêu âm quý 1:
+                  </label>
+                  <input type="date" id="input-crl-date" class="date-input">
+                </div>
+              </div>
+            </div>
+
+            <!-- MODE 3: IVF SECTION -->
+            <div class="mode-form-section" data-section="ivf" style="display: none; flex-direction: column; gap: var(--primitive-space-4);">
+              <div class="form-row">
+                <div class="input-group">
+                  <label for="input-ivf-date" class="input-label">
+                    Ngày chuyển phôi:
+                    <span class="input-label-hint">(Mốc thụ tinh chính xác)</span>
+                  </label>
+                  <input type="date" id="input-ivf-date" class="date-input">
+                </div>
+
+                <div class="input-group">
+                  <label for="select-ivf-type" class="input-label">
+                    Loại phôi chuyển:
+                  </label>
+                  <select id="select-ivf-type" class="select-input">
+                    <option value="day5">Phôi ngày 5 (Blastocyst - cộng 19 ngày quy ước)</option>
+                    <option value="day3">Phôi ngày 3 (Cleavage - cộng 17 ngày quy ước)</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- MODE 4: REVERSE EDD SECTION -->
+            <div class="mode-form-section" data-section="reverse" style="display: none; flex-direction: column; gap: var(--primitive-space-4);">
+              <div class="input-group">
+                <label for="input-edd-date" class="input-label">
+                  Ngày dự sinh đã biết (EDD):
+                  <span class="input-label-hint">(Dự sinh 40 tuần đã chuẩn hóa)</span>
+                </label>
+                <input type="date" id="input-edd-date" class="date-input">
+              </div>
+            </div>
+
+          </fieldset>
+        </form>
+
+        <!-- HERO METRIC CARD READOUT -->
+        <output class="hero-metric-card" id="clinical-result-card" aria-live="polite">
+          <div class="metric-header">
+            <span class="metric-tag">KẾT QUẢ ĐỊNH TUỔI THAI CHÍNH THỨC</span>
+            <span class="legal-basis-badge" id="badge-legal-basis">LMP tin cậy</span>
+          </div>
+
+          <div class="metric-primary-display">
+            <div class="metric-primary-val" id="readout-ga-primary">-- tuần -- ngày</div>
+            <div class="metric-primary-sub" id="readout-ga-sub">Đang tính toán...</div>
+          </div>
+
+          <div class="metric-grid">
+            <div class="metric-grid-item">
+              <span class="metric-grid-label">Ngày dự sinh (EDD):</span>
+              <span class="metric-grid-val edd" id="readout-edd">--/--/----</span>
+            </div>
+
+            <div class="metric-grid-item">
+              <span class="metric-grid-label">Giai đoạn thai kỳ:</span>
+              <span class="metric-grid-val" id="readout-stage">--</span>
+            </div>
+
+            <div class="metric-grid-item">
+              <span class="metric-grid-label">Bề cao tử cung (BCTC):</span>
+              <span class="metric-grid-val bctc" id="readout-bctc">--</span>
+            </div>
+          </div>
+
+          <div class="result-actions" style="margin-top: var(--primitive-space-3); display: flex; gap: var(--primitive-space-2); flex-wrap: wrap;">
+            <button type="button" class="btn-action btn-action-primary btn-jump-wheel" id="btn-jump-to-wheel" style="flex: 1; min-height: 42px;">
+              🎡 Xem & Dóng trên Vòng xoay
+            </button>
+          </div>
+        </output>
+      </div> <!-- /#group-mobile-form -->
+
+      <!-- INTERACTIVE WHEEL TUTORIAL (ẨN TRÊN MOBILE VÌ ĐÃ CÓ CHỈ DẪN TRỰC TIẾP TRÊN VÒNG) -->
+      <section class="wheel-guide-card desktop-only-card" id="wheel-guide">
+          <div class="coach-header">
+            <div class="coach-title-group">
+              <h3 class="section-title">Cách dùng và đọc vòng xoay từ đề bài (Thực hành 4 bước)</h3>
+            </div>
+          </div>
+
+          <div class="guide-scenarios-bar">
+            <div class="guide-scenarios-title">Thực hành theo đề bài mẫu (Bấm để tự động nạp & xoay vòng):</div>
+            <div class="scenario-buttons-row">
+              <button type="button" class="btn-scenario active" data-scenario="case1" id="btn-case-1">
+                Tình huống 1: Thai tự nhiên (LMP 15/04)
+              </button>
+              <button type="button" class="btn-scenario" data-scenario="case2" id="btn-case-2">
+                Tình huống 2: Siêu âm CRL 45 mm
+              </button>
+              <button type="button" class="btn-scenario" data-scenario="case3" id="btn-case-3">
+                Tình huống 3: IVF phôi ngày 5
+              </button>
+              <button type="button" class="btn-demo-spin" id="btn-demo-spin">
+                Mô phỏng vòng tự xoay (360°)
+              </button>
+            </div>
+          </div>
+
+          <div class="active-scenario-banner" id="active-scenario-banner">
+            <div class="active-scenario-banner-title" id="scenario-banner-title">
+              Đang xem Tình huống 1: Thai tự nhiên theo kỳ kinh cuối
+            </div>
+            <div class="active-scenario-banner-text" id="scenario-banner-text">
+              Đề bài cho LMP = 15/04. Vòng xoay đã tự xoay kim ĐỎ về vạch ngày 15 Tháng 4. Hãy nhìn kim XANH để đọc ngày dự sinh và dóng ngày khám hôm nay để đọc tuần thai.
+            </div>
+          </div>
+
+          <div class="guide-steps-grid">
+            
+            <div class="guide-step-box">
+              <div class="guide-step-head">
+                <span class="guide-step-num">1</span>
+                <span>Xoay Mũi tên ĐỎ về Ngày kinh chót</span>
+              </div>
+              <div class="guide-step-body">
+                Nhìn trên vành lịch ngoài (có ghi rõ <mark>THÁNG</mark> và số ngày <mark>1, 10, 20, 30</mark>). Dùng ngón tay kéo đĩa trong sao cho <strong>Mũi tên ĐỎ (LMP)</strong> chỉ đúng vạch ngày kinh chót.
+              </div>
+            </div>
+
+            <div class="guide-step-box">
+              <div class="guide-step-head">
+                <span class="guide-step-num">2</span>
+                <span>Đọc Ngày dự sinh tại Mũi tên XANH</span>
+              </div>
+              <div class="guide-step-body">
+                Không cần tính nhẩm! Nhìn thẳng theo <strong>Mũi tên XANH (Dự sinh 40w)</strong> xem nó đang trỏ vào ngày mấy trên vành lịch ngoài. Đó chính là <strong>Ngày dự sinh chính thức (EDD)</strong>.
+              </div>
+            </div>
+
+            <div class="guide-step-box">
+              <div class="guide-step-head">
+                <span class="guide-step-num">3</span>
+                <span>Dóng Ngày khám để đọc Tuổi thai</span>
+              </div>
+              <div class="guide-step-body">
+                Tìm <strong>Ngày khám thai</strong> trên vành lịch ngoài (hoặc nhìn con trỏ đỉnh 12h nếu là hôm nay). Dóng mắt thẳng vào cung tròn tuần tuổi thai trên đĩa trong -> <strong>Đọc ngay số tuần + ngày</strong>.
+              </div>
+            </div>
+
+            <div class="guide-step-box">
+              <div class="guide-step-head">
+                <span class="guide-step-num">4</span>
+                <span>Xem Ngày thụ tinh & Mốc sàng lọc</span>
+              </div>
+              <div class="guide-step-body">
+                <strong>Mũi tên VÀNG</strong> chỉ ngày thụ tinh quy ước (+14 ngày). Dọc theo chu vi đĩa trong có các chấm phát quang đánh dấu mốc đo NT (11-13w), siêu âm hình thái (20-22w), test OGTT (24-28w).
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- NHÓM TAB DI ĐỘNG 2: TRẠM THI OSCE -->
+        <div class="mobile-subtab-group" id="group-mobile-osce">
+
+          <!-- OSCE EXAM CASE GENERATOR & 5-MIN TIMER CARD (Đột phá 2) -->
+          <section class="quiz-simulator-card" id="quiz-simulator">
+          <div class="quiz-header">
+            <h3 class="section-title">Luyện thi OSCE trạm 1: Đề thi ngẫu nhiên & Đồng hồ 5 phút</h3>
+            <div class="timer-box">
+              <span>⏱️</span>
+              <strong id="quiz-timer-display">05:00</strong>
+            </div>
+          </div>
+
+          <div class="quiz-content-box">
+            <div style="display: flex; align-items: center; justify-content: space-between;">
+              <strong style="color: #E11D48;" id="quiz-case-title">Đề thi số 1: Thai phụ kinh nguyệt đều</strong>
+              <button type="button" class="btn-action" id="btn-next-quiz" style="min-height: 36px; padding: 0.3rem 0.8rem; font-size: 0.775rem;">
+                🔄 Đổi đề thi khác
+              </button>
+            </div>
+            <p class="quiz-patient-prompt" id="quiz-patient-prompt">
+              Sản phụ Nguyễn Thị H., 26 tuổi, PARA 0000. Đến khám thai lần đầu. Kỳ kinh cuối ngày 05/02/2026. Chu kỳ kinh 28 ngày, nhớ rõ ngày đầu, không dùng thuốc tránh thai.
+            </p>
+            <div class="quiz-task-prompt" id="quiz-task-prompt">
+              Nhiệm vụ: Hãy tính ngày dự sinh theo Naegele, tuổi thai hiện tại và cho biết xét nghiệm sàng lọc dị tật cần làm.
+            </div>
+
+            <div class="quiz-solution-box" id="quiz-solution-box">
+              <strong>ĐÁP ÁN & BIỆN LUẬN CHUẨN:</strong><br>
+              <span id="quiz-solution-text">Dự sinh Naegele: 12/11/2026. Tuổi thai: 14 tuần 0 ngày. Cần làm Double Test / Combined Test hoặc NIPT.</span>
+            </div>
+          </div>
+
+          <div class="quiz-actions">
+            <button type="button" class="btn-action btn-action-primary" id="btn-start-timer">
+              ▶ Bắt đầu tính giờ 5 phút
+            </button>
+            <button type="button" class="btn-action" id="btn-show-solution">
+              💡 Xem đáp án & Biện luận
+            </button>
+            <button type="button" class="btn-action" id="btn-apply-quiz-data">
+              🎯 Nạp dữ liệu đề này vào Vòng xoay
+            </button>
+          </div>
+        </section>
+
+        <!-- STEP-BY-STEP CLINICAL REASONING -->
+        <article class="osce-coach-card">
+          <div class="coach-header">
+            <div class="coach-title-group">
+              <h3 class="section-title">Huấn luyện viên lý luận lâm sàng (5 bước chuẩn)</h3>
+            </div>
+          </div>
+
+          <div class="coach-steps-list">
+            
+            <div class="coach-step-item">
+              <div class="coach-step-head">
+                <span class="step-badge">1</span>
+                <span>Thẩm định giá trị pháp lý kỳ kinh cuối</span>
+              </div>
+              <div class="coach-step-body" id="coach-lmp-status">
+                Đang thẩm định 4 tiêu chuẩn kinh nguyệt...
+              </div>
+            </div>
+
+            <div class="coach-step-item">
+              <div class="coach-step-head">
+                <span class="step-badge">2</span>
+                <span>Tính nhẩm Naegele và đếm ngón tay trong phòng thi</span>
+              </div>
+              <div class="coach-step-body" id="coach-naegele-steps">
+                Hướng dẫn nhẩm số ngày lẻ theo tháng 30 vs 31 ngày để tự tin đếm tay không cần máy tính.
+              </div>
+            </div>
+
+            <div class="coach-step-item">
+              <div class="coach-step-head">
+                <span class="step-badge">3</span>
+                <span>Trọng tài siêu âm CRL quý 1 (Công thức 42 + CRL & Luật ACOG/ISUOG)</span>
+              </div>
+              <div class="coach-step-body" id="coach-crl-arbitration">
+                Công thức nhẩm: Tuổi thai (ngày) = 42 + CRL (mm). Đoạn CRL 10-84 mm là cửa sổ sinh học vàng.
+              </div>
+            </div>
+
+            <div class="coach-step-item">
+              <div class="coach-step-head">
+                <span class="step-badge">4</span>
+                <span>Thụ tinh trong ống nghiệm (IVF) và bẫy thi cấm lùi tuổi thai</span>
+              </div>
+              <div class="coach-step-body" id="coach-ivf-trap">
+                Bẫy thi lâm sàng: Tuyệt đối CẤM lùi tuổi thai IVF theo siêu âm. Thai nhỏ là dấu hiệu FGR sớm hoặc bất thường nhiễm sắc thể.
+              </div>
+            </div>
+
+            <div class="coach-step-item">
+              <div class="coach-step-head">
+                <span class="step-badge">5</span>
+                <span>Lộ trình các cột mốc sàng lọc chu sinh</span>
+              </div>
+              <div class="coach-step-body" id="coach-milestones">
+                Đang đồng bộ lộ trình sàng lọc...
+              </div>
+            </div>
+
+          </div>
+        </article>
+
+        <!-- CLINICAL CHECKLIST RUBRIC (10.0 Points) -->
+        <aside class="osce-rubric-card">
+          <div class="rubric-header">
+            <h3 class="section-title">Bảng kiểm trạm hỏi bệnh & Tính tuổi thai (5 phút)</h3>
+            <div class="rubric-score-badge">
+              <span>Tổng điểm:</span>
+              <strong id="rubric-total-score">10.0 / 10.0</strong>
+            </div>
+          </div>
+
+          <div style="font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 4px;">
+            Đánh giá năng lực thực hành: <span id="rubric-feedback-badge" style="font-weight: 700; color: #059669;">XUẤT SẮC // VỮNG TAY NGHỀ</span>
+          </div>
+
+          <div class="rubric-list">
+            
+            <label class="rubric-item completed">
+              <input type="checkbox" class="rubric-checkbox" data-pts="1.0" checked>
+              <div class="rubric-item-text">
+                Chào hỏi, giới thiệu bản thân, bảo đảm tính riêng tư và tạo tâm lý an tâm cho thai phụ.
+              </div>
+              <span class="rubric-pts">[1.0 điểm]</span>
+            </label>
+
+            <label class="rubric-item completed">
+              <input type="checkbox" class="rubric-checkbox" data-pts="3.0" checked>
+              <div class="rubric-item-text">
+                Khai thác PARA 4 số đầy đủ và ghi nhận tiền sử các lần sinh nở, sảy, nạo hút, sinh non trước đây.
+              </div>
+              <span class="rubric-pts">[3.0 điểm]</span>
+            </label>
+
+            <label class="rubric-item completed">
+              <input type="checkbox" class="rubric-checkbox" data-pts="2.0" checked>
+              <div class="rubric-item-text">
+                Thẩm định đủ 4 điều kiện chu kỳ kinh nguyệt tin cậy (kinh đều 28-30 ngày, nhớ rõ ngày đầu, không dùng nội tiết, không cho con bú).
+              </div>
+              <span class="rubric-pts">[2.0 điểm]</span>
+            </label>
+
+            <label class="rubric-item completed">
+              <input type="checkbox" class="rubric-checkbox" data-pts="3.0" checked>
+              <div class="rubric-item-text">
+                Tính chính xác ngày dự sinh theo công thức Naegele, đối chiếu siêu âm CRL quý 1 và biện luận tuổi thai hiện tại.
+              </div>
+              <span class="rubric-pts">[3.0 điểm]</span>
+            </label>
+
+            <label class="rubric-item completed">
+              <input type="checkbox" class="rubric-checkbox" data-pts="1.0" checked>
+              <div class="rubric-item-text">
+                Giao tiếp giải thích rõ ràng, thông báo ngày dự sinh và dặn dò các mốc khám thai quan trọng tiếp theo (đo NT, siêu âm hình thái, OGTT).
+              </div>
+              <span class="rubric-pts">[1.0 điểm]</span>
+            </label>
+
+          </div>
+        </aside>
+      </div> <!-- /#group-mobile-osce -->
+
+      </section>
+
+    </main>
+
+    <!-- APP FOOTER -->
+    <footer class="app-footer">
+      <div class="footer-content">
+        <span class="footer-author">&copy; Việt Thanh - Y23C - 17</span>
+        <span class="footer-divider">&bull;</span>
+        <span class="footer-desc">Vòng xoay quang học & Huấn luyện lâm sàng Sản khoa</span>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Toast Message -->
+  <div id="toast-msg" class="toast-msg">Đã sao chép phiếu tóm tắt khám thai vào bộ nhớ tạm!</div>
+
+  <!-- Scripts -->
+  <script src="js/clinical-engine.js"></script>
+  <script src="js/wheel.js"></script>
+  <script src="js/tour.js"></script>
+  <script src="js/tools.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
