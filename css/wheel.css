@@ -1,0 +1,514 @@
+/* ==========================================================================
+   CHRONO-OBSTETRIX DUAL-RING VECTOR WHEEL STYLING (PASTEL PEACH CLAY)
+   Theme: Tactile Clay Dial, High Contrast Typography & Cute 3D Depth
+   Rule: Zero em-dashes. Touch-action: none on drag surface.
+   ========================================================================== */
+
+.wheel-wrapper {
+  position: relative;
+  width: var(--wheel-diameter);
+  height: var(--wheel-diameter);
+  max-width: 100%;
+  display: grid;
+  place-items: center;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
+  cursor: grab;
+  margin: 0 auto;
+}
+
+.wheel-wrapper:active {
+  cursor: grabbing;
+}
+
+/* Clay Halo Rim Background */
+.wheel-halo {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--primitive-radius-full);
+  background: radial-gradient(circle, #FFFFFF 50%, #FFF4EF 75%, #FFE2D8 100%);
+  border: 4px solid #FFFFFF;
+  box-shadow: 
+    0 18px 40px -8px rgba(244, 63, 94, 0.22),
+    0 8px 16px -4px rgba(74, 29, 36, 0.08),
+    inset 4px 4px 10px rgba(255, 255, 255, 0.95),
+    inset -4px -4px 12px rgba(251, 113, 133, 0.15);
+  pointer-events: none;
+}
+
+/* SVG Element */
+.pregnancy-wheel-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+  touch-action: none;
+}
+
+/* SVG Text Styles (Super Crisp on Light Pastel Clay) */
+.svg-month-label {
+  font-family: var(--font-display);
+  font-size: 11.5px;
+  font-weight: 800;
+  fill: #4A1D24;
+  letter-spacing: 0.04em;
+  text-anchor: middle;
+}
+
+.svg-day-num {
+  font-family: var(--font-mono);
+  font-size: 8.5px;
+  font-weight: 700;
+  fill: #82545D;
+  text-anchor: middle;
+}
+
+.svg-week-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 800;
+  fill: #E11D48;
+  text-anchor: middle;
+}
+
+.svg-needle-text {
+  font-family: var(--font-display);
+  font-size: 8.5px;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  text-anchor: middle;
+}
+
+.svg-center-title {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 800;
+  fill: #82545D;
+  text-anchor: middle;
+  letter-spacing: 0.06em;
+}
+
+.svg-center-val {
+  font-family: var(--font-mono);
+  font-size: 21px;
+  font-weight: 800;
+  fill: #E11D48;
+  text-anchor: middle;
+}
+
+.svg-center-sub {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  font-weight: 700;
+  fill: #4A1D24;
+  text-anchor: middle;
+}
+
+/* Wheel Controls Bar */
+.wheel-controls {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--primitive-space-3);
+  margin-top: var(--primitive-space-2);
+}
+
+.wheel-status-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.6rem 1.1rem;
+  background: #FFF5F1;
+  border: 2px solid #FFFFFF;
+  border-radius: var(--primitive-radius-md);
+  box-shadow: inset 2px 2px 5px rgba(74, 29, 36, 0.04), 0 4px 10px rgba(251, 113, 133, 0.08);
+  font-size: 0.85rem;
+}
+
+.wheel-status-item {
+  display: flex;
+  align-items: center;
+  gap: var(--primitive-space-2);
+  color: var(--text-secondary);
+}
+
+.wheel-status-item strong {
+  font-family: var(--font-mono);
+  color: #E11D48;
+  font-weight: 800;
+}
+
+.wheel-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--primitive-space-2);
+  width: 100%;
+}
+
+/* Chunky 3D Clay Buttons */
+.btn-action {
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0.55rem 1.2rem;
+  border-radius: var(--btn-radius);
+  border: 2px solid #FFFFFF;
+  background: #FFFFFF;
+  color: var(--text-primary);
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--primitive-space-2);
+  cursor: pointer;
+  transition: all 0.2s var(--ease-clay-bounce);
+  box-shadow: 
+    0 6px 14px rgba(251, 113, 133, 0.15),
+    inset 2px 2px 4px rgba(255, 255, 255, 0.9),
+    inset -2px -2px 4px rgba(251, 113, 133, 0.1);
+}
+
+.btn-action:hover {
+  transform: translateY(-2px);
+  background: #FFF1EC;
+  color: #E11D48;
+  box-shadow: 
+    0 10px 20px rgba(251, 113, 133, 0.25),
+    inset 2px 2px 4px rgba(255, 255, 255, 0.95);
+}
+
+.btn-action:active {
+  transform: translateY(1px);
+  box-shadow: 0 3px 6px rgba(251, 113, 133, 0.15);
+}
+
+.btn-action-primary {
+  background: linear-gradient(135deg, #FDA4AF, #FB7185 60%, #F43F5E);
+  color: #FFFFFF;
+  box-shadow: var(--clay-btn-shadow);
+  border: 2px solid rgba(255, 255, 255, 0.4);
+}
+
+.btn-action-primary:hover {
+  background: linear-gradient(135deg, #FB7185, #F43F5E);
+  color: #FFFFFF;
+  box-shadow: 
+    0 12px 24px rgba(244, 63, 94, 0.4),
+    inset 2px 2px 4px rgba(255, 255, 255, 0.8);
+}
+
+/* Wheel Legend */
+.wheel-legend {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--primitive-space-3);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-top: var(--primitive-space-1);
+}
+
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--primitive-space-1);
+}
+
+.legend-swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 4px;
+  border: 1.5px solid #FFFFFF;
+}
+
+.legend-swatch.lmp {
+  background: #F43F5E;
+  box-shadow: 0 2px 6px rgba(244, 63, 94, 0.4);
+}
+
+.legend-swatch.conception {
+  background: #FACC15;
+  box-shadow: 0 2px 6px rgba(250, 204, 21, 0.4);
+}
+
+.legend-swatch.edd {
+  background: #10B981;
+  box-shadow: 0 2px 6px rgba(16, 185, 129, 0.4);
+}
+
+/* ==========================================================================
+   DIRECT ON-WHEEL VISUAL GUIDE & LASER SIGHTLINES STYLING
+   ========================================================================== */
+
+@keyframes guide-dash {
+  to {
+    stroke-dashoffset: -20;
+  }
+}
+
+@keyframes beacon-pulse {
+  0% {
+    r: 6;
+    opacity: 1;
+    stroke-width: 2.5;
+  }
+  50% {
+    r: 14;
+    opacity: 0.6;
+    stroke-width: 1.8;
+  }
+  100% {
+    r: 22;
+    opacity: 0;
+    stroke-width: 0.5;
+  }
+}
+
+.svg-laser-animated {
+  animation: guide-dash 0.9s linear infinite;
+}
+
+.svg-beacon-ring {
+  animation: beacon-pulse 1.3s ease-out infinite;
+  transform-origin: center;
+}
+
+.svg-guide-badge {
+  cursor: default;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.svg-guide-badge:hover {
+  transform: scale(1.04);
+}
+
+/* ==========================================================================
+   OSCE ON-WHEEL PHYSICAL EXAM COACH (NO PHONE REFLEX TRAINER)
+   ========================================================================== */
+
+.onwheel-coach-card {
+  width: 100%;
+  background: linear-gradient(145deg, #FFFDFB 0%, #FFF3EC 100%);
+  border: 2.5px solid #FFFFFF;
+  border-radius: var(--primitive-radius-xl);
+  box-shadow: var(--clay-card-shadow);
+  padding: var(--primitive-space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--primitive-space-3);
+  margin-bottom: var(--primitive-space-3);
+}
+
+.onwheel-coach-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--primitive-space-2);
+}
+
+.onwheel-coach-title {
+  font-family: var(--font-display);
+  font-size: 0.925rem;
+  font-weight: 800;
+  color: #4A1D24;
+  display: flex;
+  align-items: center;
+  gap: var(--primitive-space-2);
+}
+
+.onwheel-scenario-tabs {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.btn-scenario-tab {
+  background: #FFF8F5;
+  border: 1.5px solid #FFD8CC;
+  border-radius: var(--primitive-radius-full);
+  padding: 0.35rem 0.75rem;
+  font-family: var(--font-display);
+  font-size: 0.775rem;
+  font-weight: 700;
+  color: #6E3B46;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(244, 63, 94, 0.08);
+  transition: all 0.2s ease;
+}
+
+.btn-scenario-tab:hover {
+  background: #FFE4DA;
+  color: #E11D48;
+}
+
+.btn-scenario-tab.active {
+  background: linear-gradient(135deg, #FB7185, #E11D48);
+  color: #FFFFFF;
+  border-color: #FFFFFF;
+  box-shadow: 0 4px 12px rgba(225, 29, 72, 0.35);
+}
+
+/* 4 Step Navigation Buttons */
+.onwheel-steps-nav {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+}
+
+@media (max-width: 600px) {
+  .onwheel-steps-nav {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.btn-onwheel-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  background: #FFFFFF;
+  border: 2px solid #FFE2D8;
+  border-radius: 14px;
+  padding: 0.5rem 0.4rem;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: #5A2731;
+  cursor: pointer;
+  box-shadow: var(--clay-input-shadow);
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  text-align: center;
+}
+
+.btn-onwheel-step .step-tag {
+  font-size: 0.65rem;
+  color: #E11D48;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.btn-onwheel-step:hover {
+  transform: translateY(-2px);
+  border-color: #FDA4AF;
+}
+
+.btn-onwheel-step.active {
+  background: linear-gradient(135deg, #FB7185 0%, #E11D48 100%);
+  color: #FFFFFF;
+  border-color: #FFFFFF;
+  box-shadow: 
+    0 8px 18px rgba(225, 29, 72, 0.35),
+    inset 2px 2px 4px rgba(255, 255, 255, 0.4);
+}
+
+.btn-onwheel-step.active .step-tag {
+  color: #FFF2EC;
+}
+
+/* Step Practical Instruction Box */
+.onwheel-instruction-box {
+  background: #FFFFFF;
+  border: 1.5px solid #FFDCD1;
+  border-radius: 16px;
+  padding: var(--primitive-space-3);
+  box-shadow: inset 2px 2px 5px rgba(244, 63, 94, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: var(--primitive-space-2);
+}
+
+.instruction-row {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--primitive-space-2);
+  font-size: 0.8rem;
+  line-height: 1.45;
+  color: #381219;
+}
+
+.instruction-icon {
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.instruction-text strong {
+  color: #E11D48;
+}
+
+.instruction-text em {
+  font-style: normal;
+  font-weight: 700;
+  color: #059669;
+}
+
+/* Examiner Answer Quote */
+.examiner-quote-box {
+  background: #FFF5F0;
+  border-left: 3.5px solid #E11D48;
+  border-radius: 0 10px 10px 0;
+  padding: 0.45rem 0.75rem;
+  font-size: 0.775rem;
+  color: #4A1D24;
+}
+
+.examiner-quote-box strong {
+  color: #B91C1C;
+}
+
+/* Toggle Toolbar */
+.onwheel-toggles-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--primitive-space-2);
+  padding-top: var(--primitive-space-1);
+  border-top: 1px dashed #FFD4C7;
+}
+
+.btn-toggle-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #FFF8F5;
+  border: 1.5px solid #FFD0C2;
+  border-radius: var(--primitive-radius-full);
+  padding: 0.35rem 0.8rem;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #6E3B46;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-toggle-pill:hover {
+  background: #FFE2D8;
+}
+
+.btn-toggle-pill.active {
+  background: #059669;
+  color: #FFFFFF;
+  border-color: #047857;
+  box-shadow: 0 4px 10px rgba(5, 150, 105, 0.3);
+}
+
+.btn-toggle-pill.blind-active {
+  background: #D97706;
+  color: #FFFFFF;
+  border-color: #B45309;
+  box-shadow: 0 4px 10px rgba(217, 119, 6, 0.3);
+}
+
